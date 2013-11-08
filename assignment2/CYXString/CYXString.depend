@@ -1,12 +1,14 @@
 # depslib dependency file v1.0
-1383914509 source:d:\git_repository\advanced_cpp\assignment2\cyxstring\cyxstring.cpp
+1383931871 source:d:\git_repository\advanced_cpp\assignment2\cyxstring\cyxstring.cpp
 	"CYXString.h"
 	<iostream>
 
-1383914400 d:\git_repository\advanced_cpp\assignment2\cyxstring\cyxstring.h
+1383929584 d:\git_repository\advanced_cpp\assignment2\cyxstring\cyxstring.h
 	<iostream>
+	<fstream>
 
-1383912722 source:d:\git_repository\advanced_cpp\assignment2\cyxstring\main.cpp
+1383931789 source:d:\git_repository\advanced_cpp\assignment2\cyxstring\main.cpp
 	"CYXString.h"
 	<iostream>
+	<sstream>
 
