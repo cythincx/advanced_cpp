@@ -1,0 +1,519 @@
+
+<!-- saved from url=(0054)http://www.luokai.org/tju/adv.cpp.s13/prog3/prog3.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+   <meta name="GENERATOR" content="Mozilla/4.04 [en] (Win95; I) [Netscape]">
+   <title>Assignment 3 - MyString Class</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#3333FF" vlink="#800080" alink="#FFFF00" youdao="bind">
+<hr width="80%">
+<center>
+  <h1><b><font face="Times New Roman">Assignment 3</font></b> </h1>
+</center>
+
+<hr width="80%">
+<h2 align="center">Program Note: For this assignment, the normal C++ string and 
+  cstring functions can <font color="#FF0000">not</font> be used. <br>
+  You must write all the functions that will be used.</h2>
+<hr width="80%">
+<p><font size="5">Classes, Objects, Pointers, Dynamic Memory, GOF, Operator Overloading</font><br>
+</p>
+<p><b>Program Description: </b>In this assignment, you will be modifiying your 
+  MYString class from program 2. Eventually you will need to use your MYString 
+  to do some silly things that will be testing your class in a main described 
+  below. But before you start on the requirements of main, you should first write 
+  and test your class with a small main.</p>
+<p>The MYString objects will hold a string and allow it to be used and changed(it 
+  can grow; and so on). </p>
+<p>Below will be the details of the class. Since some or most of this maybe new 
+  or a review for you, I would recommend that you write and test this class a 
+  few member functions at a time. For example you may want to start by writing 
+  the two constructors and the <b>[ ]</b> function and then test them with some 
+  simple code in main like this:</p>
+<pre>    MYString testStr("hello");<br>    <br>    cout &lt;&lt; "Testing operator [] function\n" ;    // testStr[0] should return 'h'<br>    for(int i = 0; i &lt; 10; i++ )<br>        cout &lt;&lt; i &lt;&lt; ":" &lt;&lt; testStr[i] &lt;&lt; ' ' &lt;&lt; static_cast&lt;int&gt;(testStr.[i])) &lt;&lt; endl;<br>    cout &lt;&lt; endl &lt;&lt; endl;</pre>
+<p>Your first job will be to create and test the MYString class. As you write 
+  each member function, you should then write some code in main to test that the 
+  member function works well. As you are doing this writing and testing of the 
+  class you could write the class and the main in the same file, and then separate 
+  them once you have written and tested well. </p>
+<p>Inside the class we will have the following data members:</p>
+<table width="100%" border="1">
+  <tbody><tr> 
+    <td width="34%"> 
+      <div align="center"><b>Member Data</b></div>
+    </td>
+    <td width="66%"> 
+      <div align="center"><b>Description</b></div>
+    </td>
+  </tr>
+  <tr> 
+    <td width="34%"> 
+      <div align="center">char * str</div>
+    </td>
+    <td width="66%"> 
+      <div align="center">pointer to dynamic memory for storing the string</div>
+    </td>
+  </tr>
+  <tr> 
+    <td width="34%"> 
+      <div align="center">int size</div>
+    </td>
+    <td width="66%"> 
+      <div align="center">size of the memory that is available to be used <br>
+        <b>(start with 20 char's and then double it whenever this is not enough)</b></div>
+    </td>
+  </tr>
+  <tr> 
+    <td width="34%"> 
+      <div align="center">int end</div>
+    </td>
+    <td width="66%"> 
+      <div align="center">index that is the end of the string</div>
+    </td>
+  </tr>
+</tbody></table>
+<p>The class will store the string in dynamic memory that is pointed to with the 
+  pointer. When you first create an MYString object you should allocate 20 spaces 
+  of memory (using the new command). The string will be stored as a cstring in 
+  this memory.</p>
+<p>For example if we were storing the string "cat" in a MYString object, 
+  our data member would have the following values:</p>
+<table width="29%" border="1">
+  <tbody><tr> 
+    <td width="48%"> 
+      <div align="center">str</div>
+    </td>
+    <td width="52%"> 
+      <div align="center">starting addr of dynamic array</div>
+    </td>
+  </tr>
+  <tr> 
+    <td width="48%"> 
+      <div align="center">size</div>
+    </td>
+    <td width="52%"> 
+      <div align="center">20</div>
+    </td>
+  </tr>
+  <tr> 
+    <td width="48%"> 
+      <div align="center">end</div>
+    </td>
+    <td width="52%"> 
+      <div align="center">3</div>
+    </td>
+  </tr>
+</tbody></table>
+<br>
+Dynamic array: 
+<table width="80%" border="1">
+  <tbody><tr> 
+    <td> 
+      <div align="center">c</div>
+    </td>
+    <td> 
+      <div align="center">a</div>
+    </td>
+    <td> 
+      <div align="center">t</div>
+    </td>
+    <td> 
+      <div align="center">\0</div>
+    </td>
+    <td> 
+      <div align="center">?</div>
+    </td>
+    <td> 
+      <div align="center">?</div>
+    </td>
+    <td> 
+      <div align="center">?</div>
+    </td>
+    <td> 
+      <div align="center">?</div>
+    </td>
+    <td> 
+      <div align="center">?</div>
+    </td>
+    <td> 
+      <div align="center">?</div>
+    </td>
+    <td> 
+      <div align="center">?</div>
+    </td>
+    <td> 
+      <div align="center">?</div>
+    </td>
+    <td> 
+      <div align="center">?</div>
+    </td>
+    <td> 
+      <div align="center">?</div>
+    </td>
+    <td> 
+      <div align="center">?</div>
+    </td>
+    <td> 
+      <div align="center">?</div>
+    </td>
+    <td> 
+      <div align="center">?</div>
+    </td>
+    <td> 
+      <div align="center">?</div>
+    </td>
+    <td> 
+      <div align="center">?</div>
+    </td>
+    <td> 
+      <div align="center">?</div>
+    </td>
+  </tr>
+</tbody></table>
+<p>Since you will be using dynamic memory for the string, remember to delete memory 
+  that you are done using.</p>
+<p>The MYString class will need to have the following member functions:</p>
+<table border="1" width="97%">
+  <tbody><tr> 
+    <td colspan="2" align="center"><i><font size="+2">Programming Note: Write 
+      and test one or two functions at a time</font></i></td>
+  </tr>
+  <tr> 
+    <td width="34%" align="center"><b>Member Functions : return type</b></td>
+    <td width="66%"> 
+      <p align="center"><b>Description</b></p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="34%" align="center">MYString( )</td>
+    <td width="66%"> 
+      <blockquote>
+        <p><b>Default Constructor:</b> creates an empty string</p>
+      </blockquote>
+    </td>
+  </tr>
+  <tr> 
+    <td width="34%" align="center">MYString (const char*)</td>
+    <td width="66%">
+      <blockquote>
+        <p>creates a string that contains the information from the argument<br>
+          <b>example:</b> MYString greeting( "hello there wise one");</p>
+      </blockquote>
+    </td>
+  </tr>
+  <tr> 
+    <td width="34%" align="center">MYString( const MYString&amp; )</td>
+    <td width="66%">
+      <blockquote>
+        <p>copy constructor....making a deep copy </p>
+      </blockquote>
+    </td>
+  </tr>
+  <tr> 
+    <td width="34%" align="center">~MYString</td>
+    <td width="66%">
+      <blockquote>
+        <p>destructor </p>
+      </blockquote>
+    </td>
+  </tr>
+  <tr> 
+    <td width="34%" align="center">= operator</td>
+    <td width="66%">
+      <blockquote>
+        <p>assign the rvalue into the lvalue....making a deep copy</p>
+      </blockquote>
+    </td>
+  </tr>
+  <tr> 
+    <td width="34%" align="center">length( ) : int </td>
+    <td width="66%">
+      <blockquote>
+        <p>the length of the string ( "cat" would return 3)</p>
+      </blockquote>
+    </td>
+  </tr>
+  <tr> 
+    <td width="34%" align="center">capacity( ) : int</td>
+    <td width="66%">
+      <blockquote>
+        <p>the total amount of space that the string could use without needing 
+          to grow</p>
+      </blockquote>
+    </td>
+  </tr>
+  <tr> 
+    <td width="34%" align="center">[ ] operator: char &amp;</td>
+    <td width="66%"> 
+      <blockquote>
+        <p>returns the character reference at a certain location ( myStr[0] for 
+          a "cat" would return 'c' ).<font color="#0033FF"><font color="#0066FF"> 
+          <font color="#000000">You do not need to do error checking to make sure 
+          the index is not out of bounds</font></font></font> (since we don't 
+          know about errors and exceptions yet) </p>
+      </blockquote>
+    </td>
+  </tr>
+  <tr> 
+    <td width="34%" align="center">+ operator </td>
+    <td width="66%">
+      <blockquote>
+        <p>return a MYString that is a combination of two MYString parameters 
+          (an llvalue and rvalue<i>)</i></p>
+      </blockquote>
+    </td>
+  </tr>
+  <tr> 
+    <td width="34%" align="center">&gt;&gt; operator</td>
+    <td width="66%">
+      <blockquote>
+        <p>read a string from the istream argument (could be from cin or an ifstream 
+          variable) {when reading in, you can assume that you will not read in 
+          a string longer than <font color="#0066FF">500</font> characters}. If 
+          there is already information in your string before doing the read, then 
+          you should replace the information. Inside this function it is ok to 
+          read into a cstring (null terminated char array)</p>
+        <p> Your return should be a reference to the istream variable</p>
+      </blockquote>
+    </td>
+  </tr>
+  <tr> 
+    <td width="34%" align="center">&lt;&lt; operator</td>
+    <td width="66%">
+      <blockquote>
+        <p>write the string out to the ostream argument, but do not add any end 
+          of line (could be cout or an ofstream variable). </p>
+        <p>Your return should be a reference to the ostream variable</p>
+      </blockquote>
+    </td>
+  </tr>
+</tbody></table>
+<p><b>Main Program Requirements:</b> <font color="#000000">(N<b>ote</b>: when 
+  writing to the output files put 1 word per line<font color="#0066CC">(1 combination 
+  string that is made of of 5 smaller strings)</font>. After each word put a space 
+  and then the length and capacity. EX. "batman" would be batman 6:20)</font> 
+</p>
+<ul>
+  <li>open the files: infile.txt for reading, outfile1.txt and outfile2.txt for 
+    output</li>
+  <li>create an empty combinationString variable</li>
+  <li>do the following loop until you have read all the data from infile.txt 
+    <ul>
+      <li>read from a file called "infile.txt" into your string class 
+        using your overloaded &gt;&gt; operator</li>
+      <li>add this new string to a combinationString until you have added 5 strings 
+        to this combinationString (appended the strings onto the end of the old 
+        string using + and = )</li>
+      <li>once you have a combinationString that holds 5 strings that you read 
+        from the file 
+        <ul>
+          <li>pass the combinationString to evenFunction(described below) by value, 
+            along with a reference to outfile1.txt</li>
+          <li>pass the combinationString to the oddFuction(described below) by 
+            reference</li>
+          <li><font color="#000000">back in main,</font> write the combinationString 
+            to outfile2.txt, one word per line with the length and capacity added 
+            at the end.</li>
+          <li>make combinationString equal ( = ) to an empty MyString (create 
+            a new empty one) {not very efficient, but I want to have you using 
+            your = operator)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+<blockquote> 
+  <p>void evenFunction(ostream &amp; ostr, MyString str )</p>
+</blockquote>
+<ul>
+  <blockquote> 
+    <p> - change the even indexed (0,2,4..) elements to '~'. For example, if your 
+      string held "batman" it would be converted to "~a~m~n" 
+      (0 is considered even)<br>
+      - write the string out to the file (outfile1.txt). <font color="#000000">Remember 
+      to have 1 word per line. </font><br>
+      - after each string also write it's length and capacity in this format length:capacity.<br>
+    </p>
+  </blockquote>
+</ul>
+<blockquote> 
+  <p>void oddFunction( MyString&amp; str )</p>
+</blockquote>
+<ul>
+  <blockquote> 
+    <p> - change the odd indexed (1,3,5...) elements to '!'. For example, if your 
+      string held "batman" it would be converted to "b!t!m!n" 
+      (0 is considered even)</p>
+  </blockquote>
+</ul>
+<blockquote>
+<p>&nbsp;</p>
+  <p><a href="http://www.luokai.org/tju/adv.cpp.s13/prog3/testfile.zip">Test Input File</a> "testfile.txt" (compressed 
+    in a zip file) this is the file you can use when you are testing your program.</p>
+  <p><a href="http://www.luokai.org/tju/adv.cpp.s13/prog3/inputFile.zip">Input file</a>: this is the file that you should 
+    use when you are getting output for turn in....Sorry about the delay in getting 
+    this out to the web page.</p>
+</blockquote>
+<p><b>Programming Note:</b> Depending on your programming knowledge this can be 
+  a difficult assignment, and so you need to write the program a small piece at 
+  a time. Write one function and then test the function, and then write another 
+  one and test it. If you write the program in this way it is much easier. Also 
+  start early so that you will have time to fix any bugs that you have. If you 
+  start on this right before it is due, then you will be under pressure to make 
+  it work quickly which can be very frustrating.</p>
+<p>One last thing that you may try to see if your program works with other files, 
+  is to use your mystring.cpp as the input file and see it still work.</p>
+<p><b>Splitting the program into 3 files: </b>After finishing the program all 
+  in one file you will want to split it into three files. </p>
+<p>Remember that in the .h file you will probably be using code from other libraries 
+  and so you will need both the include statements and the using statement, or 
+  you will get some strange error messages.</p>
+<pre>#ifndef MYSTRING_H
+#define MYSTRING_H</pre>
+<pre>#include &lt;iostream&gt;</pre>
+<pre>using namespace std ;</pre>
+<pre>class MYString......</pre>
+<p>In the .cpp file where the member functions are defined you may need to include 
+  other libraries also, so it may look like this:</p>
+<pre>#include "mystring.h"
+#include &lt;iomanip&gt;</pre>
+<p><b>Due: </b>Thursday, March 28th or Friday, March 29th depending on which class 
+  you are in.</p>
+<p> <b>Turn in: </b>A paper copy of your files ( the main, your mystring.h, your 
+  mystring.cpp, and the program output)</p>
+<p>In addition to the program header (above main), you should also have class 
+  documentation (and author info: name, class #, student id, with class description) 
+  at the top of the .h file...you should explain what the class does. I will also 
+  be taking off points if you are not using the proper indention, and general 
+  style as demonstrated by the book.</p>
+<p><b>Ways to lose points:</b></p>
+<ul>
+  <li>if your file does not contain the program header with a program description 
+    and short function descriptions to accompany the function prototypes(for functions 
+    used with main). </li>
+  <li>your .h file should have a class description about what the class does</li>
+  <li>your code should also be consistently indented as talked about in class, 
+    and shown in the book</li>
+  <li>you can not use global variables unless it is a const</li>
+  <li>you should use good variable names (descriptive, and start with lower case 
+    letter )</li>
+  <li>proper placement of { and } ( a } should not be placed at the end of a line)</li>
+  <li>no staple to keep your papers together (folding a corner or using a paper 
+    clip are not good enough)</li>
+  <li>you need to have the three source files (main, mystring.h, mystring.cpp) 
+    as well as a print out of the output file</li>
+  <li>if you did not split the MYString class into separate files</li>
+  <li>if you did not use the proper input file when turning in your output.</li>
+  <li>if you did not name your class correctly</li>
+  <li><b>The order of your files should be main, .h files, .cpp, and then output.</b></li>
+</ul>
+<p><b>Comments: </b>Comments are a way of documenting a program (explaining who 
+  did what and how). All programs for the rest of the course are required to have 
+  the following header documentation <b>before main </b>and inline documentation 
+  to explain any tricky pieces of code.</p>
+<pre>// File Name:    Actual name of file (like assign3.cpp)
+// Author:       Your Name (both in Pinyin and Hanzi (the Hanzi can be handwritten))
+// Student Number: 123456789
+
+// Assignment:   #
+// Description:  Short description of the program (at least a couple sentences - also you should
+//				 say where the input data come from, what information is output, 
+//               and is the outputted data sent to the screen or a file).  
+
+
+#include &lt;iostream&gt;
+.......the rest of the program
+
+</pre>
+<p>Each class also needs a class description that is put <b>before the .h file</b>. 
+  All programs for the rest of the course are required to have the following header 
+  documentation and inline documentation to explain any tricky pieces of code.</p>
+<pre>// File Name:    Actual name of file (like tjustring.cpp)
+// Author:       Your Name (both in Pinyin and Hanzi (the Hanzi can be handwritten))
+// Student Number: 123456789
+
+// Assignment:   #
+// Class Description:  Short description of the class (at least a couple sentences - also you should
+//				 document what the main usage of the class is and what some of the most used memeber 
+//               will do for the class).  
+
+
+#include &lt;iostream&gt;
+.......the rest of the class declaration</pre>
+<pre>&nbsp;
+</pre>
+<h2><br>
+  Start with something simple like this to get your project going.....make sure 
+  your project can compile early<br>
+</h2>
+<table width="80%" border="1">
+  <tbody><tr>
+    <td> 
+      <div align="center"><font size="+2">main.cpp</font></div>
+    </td>
+  </tr>
+  <tr> 
+    <td> 
+      <blockquote>
+        <pre>#include &lt;iostream&gt;<br>#include "lkstring.h"</pre>
+        <pre>using namespace std;</pre>
+        <pre>int main(){
+         LKString str;
+         cout &lt;&lt; "Testing String with size: " &lt;&lt; str.capacity() &lt;&lt; endl;
+         return 0;
+}
+       </pre>
+      </blockquote>
+    </td>
+  </tr>
+</tbody></table>
+<p>&nbsp;</p><table width="80%" border="1">
+  <tbody><tr> 
+    <td> 
+      <div align="center"><font size="+2">lkstring.h</font></div>
+    </td>
+  </tr>
+  <tr> 
+    <td> 
+      <blockquote>
+        <pre>#ifndef LKSTRING_H<br>#define LKSTRING_H</pre>
+        <pre>class LKString{
+    public:
+         LKString();
+         int capacity();
+    private:
+         int size;
+};</pre>
+        <pre>#endif // LKSTRING_H
+       </pre>
+      </blockquote>
+    </td>
+  </tr>
+</tbody></table>
+<p>&nbsp;</p><table width="80%" border="1">
+  <tbody><tr> 
+    <td> 
+      <div align="center"><font size="+2">lkstring.cpp</font></div>
+    </td>
+  </tr>
+  <tr> 
+    <td> 
+      <blockquote>
+        <pre>#include &lt;iostream&gt;<br>#include "lkstring.h"</pre>
+        <pre>LKString::LKString(){
+     size = 20;
+}</pre>
+        <pre>int LKString::capacity(){
+    return size;
+}
+</pre>
+      </blockquote>
+      <pre>&nbsp;</pre>
+    </td>
+  </tr>
+</tbody></table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+
+</body></html>
