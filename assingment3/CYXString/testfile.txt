@@ -1,0 +1,19 @@
+11111   22222   33333  44444  55555
+
+121212121212   343434343434   565656565656
+
+787878787878   909090909090
+
+a b c d e
+
+NowHereIsAnotherTestOfTheNewStringClass  Does It Work ?
+
+// File Name:    Actual name of file (like assign1.cpp)
+// Author:       Your Name (both in Pinyin and Hanzi (the Hanzi can be handwritten))
+// StudentNumber: 123456789012345678901234567890
+
+// Assignment:   ######################################
+// Description:  Short description of the program ( Short description of the program (at least a couple 
+//		 sentences - also you should say where the input data come from, what information is output, 
+//               and is the outputted data sent to the screen or a 
+

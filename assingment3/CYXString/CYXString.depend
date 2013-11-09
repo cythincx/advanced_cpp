@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1383997939 source:d:\git_repository\advanced_cpp\assingment3\cyxstring\cyxstring.cpp
+	"CYXString.h"
+	<iostream>
+	<fstream>
+
+1383997872 d:\git_repository\advanced_cpp\assingment3\cyxstring\cyxstring.h
+	<iostream>
+	<fstream>
+
+1383984933 source:d:\git_repository\advanced_cpp\assingment3\cyxstring\main.cpp
+	"CYXString.h"
+	<iostream>
+
