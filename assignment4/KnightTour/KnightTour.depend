@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1384245208 source:d:\git_repository\advanced_cpp\assignment4\knighttour\main.cpp
+	<iostream>
+	<iomanip>
+
