@@ -8,15 +8,22 @@
 	<iostream>
 	<fstream>
 
-1384594049 source:d:\git_repository\advanced_cpp\assignment5\doublelinkedlist\main.cpp
+1384618015 source:d:\git_repository\advanced_cpp\assignment5\doublelinkedlist\main.cpp
 	<iostream>
 	"CYXString.h"
+	"Node.h"
+	"DLL.h"
 
-1384616706 source:d:\git_repository\advanced_cpp\assignment5\doublelinkedlist\node.cpp
+1384616849 source:d:\git_repository\advanced_cpp\assignment5\doublelinkedlist\node.cpp
 	"Node.h"
 	<iostream>
 
 1384616294 d:\git_repository\advanced_cpp\assignment5\doublelinkedlist\node.h
 	<iostream>
+	"CYXString.h"
+
+1384617791 d:\git_repository\advanced_cpp\assignment5\doublelinkedlist\dll.h
+	<iostream>
+	"Node.h"
 	"CYXString.h"
 

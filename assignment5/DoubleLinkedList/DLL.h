@@ -18,6 +18,10 @@ DLL & operator=( const DLL & );
 friend ostream & operator<<(ostream & , const DLL &);
 bool insert( const CYXString & );
 bool remove( const CYXString & );
+int getNumberElements();
+void resetIteration();
+CYXString next();
+bool hasNext();
 };
 
 

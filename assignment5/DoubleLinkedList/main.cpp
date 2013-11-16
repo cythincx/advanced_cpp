@@ -1,6 +1,7 @@
 #include<iostream>
 #include "CYXString.h"
 #include "Node.h"
+#include "DLL.h"
 using namespace std;
 int main(){
     const CYXString cs1("hello");
@@ -11,5 +12,7 @@ int main(){
     cout<<(cs1!=cs2)<<endl;
     Node n(cs1);
     cout<<n.data<<endl;
+    DLL dll;
+
 
 }
