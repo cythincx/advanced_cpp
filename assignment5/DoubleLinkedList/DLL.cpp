@@ -14,11 +14,16 @@ DLL::DLL(){
 DLL::DLL( const DLL & dll ){
     head = dll.head;
     tail = dll.tail;
-    nodePtr = dll.nodePtr;
+    //nodePtr = dll.nodePtr;
+    resetIteration();
     numElements = dll.numElements;
 }
 
 DLL & DLL::operator=( const DLL & dll ){
+    head = dll.head;
+    tail = dll.tail;
+    resetIteration();
+    numElements = dll.numElements;
     return *this;
 }
 
