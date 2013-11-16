@@ -1,0 +1,22 @@
+# depslib dependency file v1.0
+1384594241 source:d:\git_repository\advanced_cpp\assignment5\doublelinkedlist\cyxstring.cpp
+	"CYXString.h"
+	<iostream>
+	<fstream>
+
+1384592638 d:\git_repository\advanced_cpp\assignment5\doublelinkedlist\cyxstring.h
+	<iostream>
+	<fstream>
+
+1384594049 source:d:\git_repository\advanced_cpp\assignment5\doublelinkedlist\main.cpp
+	<iostream>
+	"CYXString.h"
+
+1384616706 source:d:\git_repository\advanced_cpp\assignment5\doublelinkedlist\node.cpp
+	"Node.h"
+	<iostream>
+
+1384616294 d:\git_repository\advanced_cpp\assignment5\doublelinkedlist\node.h
+	<iostream>
+	"CYXString.h"
+
