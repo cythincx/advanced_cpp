@@ -17,6 +17,11 @@ DLL::DLL( const DLL & dll ){
     //nodePtr = dll.nodePtr;
     resetIteration();
     numElements = dll.numElements;
+    Node tempNode;
+    dll.resetIteration();
+
+
+
 }
 
 DLL & DLL::operator=( const DLL & dll ){
@@ -37,5 +42,9 @@ DLL::~DLL(){
 
 void DLL::resetIteration(){
     nodePtr = head;
+}
+
+void DLL::getNext(){
+    nodePtr = nodePtr->next;
 }
 

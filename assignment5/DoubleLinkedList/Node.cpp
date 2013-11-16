@@ -11,3 +11,5 @@ Node::Node(CYXString cs){
     next = 0;
     prev = 0;
 }
+Node::Node( const Node & node){
+}

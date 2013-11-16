@@ -22,6 +22,7 @@ int getNumberElements();
 void resetIteration();
 CYXString next();
 bool hasNext();
+void getNext();
 };
 
 

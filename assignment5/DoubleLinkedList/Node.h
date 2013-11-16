@@ -10,6 +10,7 @@ public:
     Node * prev;
     Node();
     Node(CYXString);
+    Node(const Node &);
 };
 
 
